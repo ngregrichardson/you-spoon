@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>You Spoon Insult Generator</title>
+    <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002" />
+  <style>body { text-align: center; }</style>
+</head>
+
+<body>
+    <img width="10%" src="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002" />
+    <h1 id="insult"></h1>
+    <button onclick="generate()">Generate
+    </button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+      var insultWrapper = $('#insult');
+        $(function () {
+          generate();
+        });
+        function generate() {
+          $.get('/get', function (insult) {
+            insultWrapper.text(insult);
+          });
+        }  
+    </script>
+</body>
+
+</html>
