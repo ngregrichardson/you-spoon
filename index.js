@@ -48,6 +48,3 @@ function copy() {
     document.selection.empty();
   }
 }
-function open() {
-  window.open("https://github.com/ngregrichardson", "_blank");
-}
