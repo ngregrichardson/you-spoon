@@ -20,4 +20,4 @@ app.get("/get", function(request, response) {
   response.send(gen.make("{{ adjective }} {{ noun }}"));
 });
 
-const listener = app.listen(process.env.PORT || 3000, function() {});
+const listener = app.listen(process.env.PORT || 4000, function() {});
