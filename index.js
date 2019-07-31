@@ -1,33 +1,25 @@
 var insultWrapper = $("#insult");
+var twitterButton = $("#tweet");
+var popover = $("#popover");
+var copyTimeout;
 $(function() {
+  $("#footer-copy").html(`&copy; Noah Richardson ${new Date().getFullYear()}`);
   generate();
 });
 function generate() {
   $.get("/get", function(insult) {
     insultWrapper.text(insult);
     makeTweet(insult);
+    clearTimeout(copyTimeout);
+    popover.text("Copy");
   });
 }
 function makeTweet(insult) {
-  var old = document.getElementsByClassName("twitter-share-button");
-  if (old != null && old != undefined) {
-    for (var i = 0; i < old.length; i++) {
-      if (old[i] != null && old[i] != undefined)
-        old[i].parentNode.removeChild(old[i]);
-    }
-  }
-  var tweet = document.createElement("a");
-  tweet.setAttribute("href", "https://twitter.com/share");
-  tweet.setAttribute("class", "twitter-share-button");
-  tweet.setAttribute("data-text", `You're just such a ${insult}`);
-  tweet.setAttribute("data-url", window.location.href);
-  tweet.setAttribute("data-via", "ngregrichardson");
-  tweet.setAttribute("data-hashtags", "jk");
-  tweet.innerHTML = "Tweet";
-  document.getElementById("footer").appendChild(tweet);
-  twttr.widgets.load();
+  twitterButton.attr("href", `https://twitter.com/intent/tweet?text=You're just such a ${insult}&url=${window.location.href}&hashtags=jk&via=ngregrichardson`)
 }
 function copy() {
+  popover.text("Insult copied!");
+  copyTimeout = setTimeout(() => {popover.text("Copy"); }, 2000);
   var element = document.getElementById("insult");
   var range, selection, worked;
   if (document.body.createTextRange) {
