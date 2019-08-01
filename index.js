@@ -1,7 +1,24 @@
-var insultWrapper = $("#insult");
-var twitterButton = $("#tweet");
-var popover = $("#popover");
-var copyTimeout;
+let insultWrapper = $("#insult");
+let twitterButton = $("#tweet");
+let popover = $("#popover");
+let finger = $("#finger");
+finger.click(() => {
+  let current = finger.css("filter").toString();
+  console.log(current);
+  let deg = "";
+  for (let i = 0; i < current.length; i++) {
+    if (!isNaN(parseInt(current.charAt(i)))) {
+      deg += current.charAt(i);
+    }
+  }
+  deg = parseInt(deg) + 45;
+  if (deg === 360) {
+    deg = 0;
+  }
+  finger.css("filter", `hue-rotate(${deg}deg)`);
+});
+
+let copyTimeout;
 $(function() {
   $("#footer-copy").html(`&copy; Noah Richardson ${new Date().getFullYear()}`);
   generate();
@@ -15,13 +32,20 @@ function generate() {
   });
 }
 function makeTweet(insult) {
-  twitterButton.attr("href", `https://twitter.com/intent/tweet?text=You're just such a ${insult}&url=${window.location.href}&hashtags=jk&via=ngregrichardson`)
+  twitterButton.attr(
+    "href",
+    `https://twitter.com/intent/tweet?text=You're just such a ${insult}&url=${
+      window.location.href
+    }&hashtags=jk&via=ngregrichardson`
+  );
 }
 function copy() {
   popover.text("Insult copied!");
-  copyTimeout = setTimeout(() => {popover.text("Copy"); }, 2000);
-  var element = document.getElementById("insult");
-  var range, selection, worked;
+  copyTimeout = setTimeout(() => {
+    popover.text("Copy");
+  }, 2000);
+  let element = document.getElementById("insult");
+  let range, selection, worked;
   if (document.body.createTextRange) {
     range = document.body.createTextRange();
     range.moveToElementText(element);
