@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>You Spoon Insult Generator</title>
-    <link rel="shortcut icon" type="image/png" href="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002" />
+    <title>YouSpoon Insult Generator</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002"
+    />
     <link rel="stylesheet" type="text/css" href="/css" />
+    <meta
+      name="Description"
+      content="YouSpoon is a simple insult generator tool and API. Made by @ngregrichardson on Github and Twitter."
+    />
+    <meta name="Keywords" content="you spoon insult generator" />
   </head>
   <body>
     <img
-         id="finger"
-         src="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002"
-         />
+      id="finger"
+      src="https://cdn.glitch.com/ef0e1501-8436-4cfd-93a5-4e8bbf9b5073%2Ficon.png?1551318046002"
+    />
     <h1 id="insult"></h1>
     <button onclick="generate()">Generate Insult</button>
     <button onclick="copy()" class="copy">
@@ -18,32 +27,33 @@
     <div id="footer">
       <div>
         <a
-           class="github-button"
-           href="https://github.com/ngregrichardson"
-           target="_blank"
-           aria-label="Follow @ngregrichardson on GitHub"
-           ><i class="github-logo"></i>Follow @ngregrichardson</a
-          >
+          class="github-button"
+          href="https://github.com/ngregrichardson"
+          target="_blank"
+          aria-label="Follow @ngregrichardson on GitHub"
+          ><i class="github-logo"></i>Follow @ngregrichardson</a
+        >
         <a
-           class="twitter-button"
-           id="tweet"
-           href="https://twitter.com/intent/tweet?text=Hello%20world"
-           aria-label="tweet"
-           target="popup"
-           ><i class="twitter-logo"></i>Tweet</a
-          >
-      </div><br>
+          class="twitter-button"
+          id="tweet"
+          href="https://twitter.com/intent/tweet?text=Hello%20world"
+          aria-label="tweet"
+          target="popup"
+          ><i class="twitter-logo"></i>Tweet</a
+        >
+      </div>
+      <br />
       <span id="footer-copy">&copy; Noah Richardson</span>
     </div>
     <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"
-            ></script>
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
     <script
-            type="text/javascript"
-            src="https://platform.twitter.com/widgets.js"
-            ></script>
+      type="text/javascript"
+      src="https://platform.twitter.com/widgets.js"
+    ></script>
     <script type="text/javascript" src="/js"></script>
   </body>
 </html>
