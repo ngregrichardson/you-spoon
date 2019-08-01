@@ -5,6 +5,7 @@ body {
 #finger {
   width: 10%;
   filter: hue-rotate(0deg);
+  cursor: pointer;
 }
 button {
   display: inline-block;
