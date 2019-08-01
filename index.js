@@ -4,7 +4,6 @@ let popover = $("#popover");
 let finger = $("#finger");
 finger.click(() => {
   let current = finger.css("filter").toString();
-  console.log(current);
   let deg = "";
   for (let i = 0; i < current.length; i++) {
     if (!isNaN(parseInt(current.charAt(i)))) {
