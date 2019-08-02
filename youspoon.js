@@ -1,9 +1,11 @@
 const express = require("express");
+const favicon = require("express-favicon");
 const app = express();
 const gen = require("sentencer");
 
 app.use(express.static("public"));
-app.use(function(req, res, next) {
+app.use(favicon(__dirname + "/assets/icon.png"));
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -12,20 +14,28 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get("/", function(request, response) {
-  response.sendFile(__dirname + "/index.html");
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/css", function(request, response) {
-  response.sendFile(__dirname + "/index.css");
+app.get("/css", (req, res) => {
+  res.sendFile(__dirname + "/index.css");
 });
 
-app.get("/js", function(request, response) {
-  response.sendFile(__dirname + "/index.js");
+app.get("/js", (req, res) => {
+  res.sendFile(__dirname + "/index.js");
 });
 
-app.get("/get", function(request, response) {
-  response.send(gen.make("{{ adjective }} {{ noun }}"));
+app.get("/icon", (req, res) => {
+  res.sendFile(__dirname + "/assets/icon.png");
 });
 
-const listener = app.listen(process.env.PORT || 4000, function() {});
+app.get("/twitter", (req, res) => {
+  res.sendFile(__dirname + "/assets/twitter.svg");
+});
+
+app.get("/get", (req, res) => {
+  res.send(gen.make("{{ adjective }} {{ noun }}"));
+});
+
+app.listen(process.env.PORT || 4000, function() {});
