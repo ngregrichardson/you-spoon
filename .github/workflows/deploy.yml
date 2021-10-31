@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -13,11 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
-      - name: Restart PM2
-        run: pm2 restart you-spoon
+      - name: Stop Docker
+        run: |
+          docker stop you-spoon
+          docker rm you-spoon
+        continue-on-error: true
+      - name: Build Docker Image
+        run: docker build -t you-spoon .
+      - name: Start Docker
+        run: docker run -d -p 6000:6000 --name you-spoon you-spoon
