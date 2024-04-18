@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import { Dropdown } from 'floating-vue'
+import StyledButton from '@/components/StyledButton.vue'
+import { ShareAndroidSolid } from '@iconoir/vue'
+import { LINKS } from '@/assets/links'
+import { generateSharingLink } from '@/lib/sharing'
+import { trackEvent } from '@aptabase/web'
+
+const props = defineProps({
+  insult: {
+    type: String,
+    required: true
+  }
+})
+
+const handleClick = (name: string) => trackEvent('share', { name })
+</script>
+
+<template>
+  <Dropdown theme="menu-dropdown">
+    <StyledButton>
+      <ShareAndroidSolid />
+    </StyledButton>
+
+    <template #popper>
+      <div class="flex flex-col gap-1">
+        <a
+          class="flex flex-row gap-2 hover:no-underline hover:bg-background/30 px-2 py-1 rounded-sm hover:text-accent transition-all"
+          v-for="item in LINKS"
+          :key="item.name"
+          target="_blank"
+          :href="generateSharingLink(item.url, props.insult)"
+          @click="() => handleClick(item.name)"
+        >
+          <component :is="item.Icon" :style="{ fill: 'hsl(var(--foreground))' }" />
+          {{ item.name }}
+        </a>
+      </div>
+    </template>
+  </Dropdown>
+</template>
