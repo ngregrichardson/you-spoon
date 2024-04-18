@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Dropdown } from 'floating-vue'
 import StyledButton from '@/components/StyledButton.vue'
-import { ShareAndroidSolid } from '@iconoir/vue'
 import { LINKS } from '@/assets/links'
 import { generateSharingLink } from '@/lib/sharing'
 import { trackEvent } from '@aptabase/web'
+import { Share2 } from 'lucide-vue-next'
 
 const props = defineProps({
   insult: {
@@ -18,8 +18,8 @@ const handleClick = (name: string) => trackEvent('share', { name })
 
 <template>
   <Dropdown theme="menu-dropdown">
-    <StyledButton>
-      <ShareAndroidSolid />
+    <StyledButton aria-label="Open share menu">
+      <Share2 role="presentation" />
     </StyledButton>
 
     <template #popper>
@@ -32,7 +32,11 @@ const handleClick = (name: string) => trackEvent('share', { name })
           :href="generateSharingLink(item.url, props.insult)"
           @click="() => handleClick(item.name)"
         >
-          <component :is="item.Icon" :style="{ fill: 'hsl(var(--foreground))' }" />
+          <component
+            :is="item.Icon"
+            :style="{ fill: item.empty ? '' : 'hsl(var(--foreground))' }"
+            role="presentation"
+          />
           {{ item.name }}
         </a>
       </div>

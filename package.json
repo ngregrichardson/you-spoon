@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@aptabase/web": "^0.4.2",
-    "@iconoir/vue": "^7.6.0",
     "floating-vue": "^5.2.2",
+    "lucide-vue-next": "^0.371.0",
     "txtgen": "^3.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

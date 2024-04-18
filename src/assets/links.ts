@@ -1,4 +1,4 @@
-import { MailSolid, MessageTextSolid } from '@iconoir/vue'
+import { Mail, MessageSquareText } from 'lucide-vue-next'
 import {
   FacebookIcon,
   LinkedInIcon,
@@ -18,7 +18,8 @@ export const LINKS = [
   {
     name: 'Email',
     url: 'mailto:?body=$BODY%0A%0A$URL&subject=$TITLE',
-    Icon: MailSolid
+    Icon: Mail,
+    empty: true
   },
   {
     name: 'Facebook',
@@ -48,7 +49,8 @@ export const LINKS = [
   {
     name: 'SMS',
     url: 'sms:?body=$TITLE.%0A%0A$BODY%0A%0A$URL',
-    Icon: MessageTextSolid
+    Icon: MessageSquareText,
+    empty: true
   },
   {
     name: 'LinkedIn',

@@ -14,6 +14,7 @@ const generateInsult = () => {
   <StyledButton
     @click="generateInsult"
     class="transition-transform hover:scale-105 pl-6 pr-4 !text-accent"
+    aria-label="Generate a new insult"
   >
     Generate <span class="group-hover:animate-hueRotate text-4xl">🖕</span>
   </StyledButton>
