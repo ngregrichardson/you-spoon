@@ -42,7 +42,7 @@ export const LINKS = [
   },
   {
     name: 'Tumblr',
-    url: 'https://www.tumblr.com/widgets/share/tool?posttype=link&url=$URL&caption=$TITLE%0A%0A$BODY',
+    url: 'https://www.tumblr.com/share/link?posttype=link&canonicalUrl=$URL&caption=$TITLE%0A%0A$BODY',
     Icon: TumblrIcon
   },
   {
