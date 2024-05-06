@@ -3,7 +3,6 @@ import { Dropdown } from 'floating-vue'
 import StyledButton from '@/components/StyledButton.vue'
 import { LINKS } from '@/assets/links'
 import { generateSharingLink } from '@/lib/sharing'
-import { trackEvent } from '@aptabase/web'
 import { Share2 } from 'lucide-vue-next'
 
 const props = defineProps({
@@ -12,8 +11,6 @@ const props = defineProps({
     required: true
   }
 })
-
-const handleClick = (name: string) => trackEvent('share', { name })
 </script>
 
 <template>
@@ -30,7 +27,8 @@ const handleClick = (name: string) => trackEvent('share', { name })
           :key="item.name"
           target="_blank"
           :href="generateSharingLink(item.url, props.insult)"
-          @click="() => handleClick(item.name)"
+          data-umami-event="share"
+          :data-umami-event-name="item.name"
         >
           <component
             :is="item.Icon"
