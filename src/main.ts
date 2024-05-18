@@ -5,6 +5,17 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import FloatingVue from 'floating-vue'
+import { init, trackEvent } from '@aptabase/web'
+
+if (import.meta.env.VITE_APTABASE_APP_KEY) {
+  init(import.meta.env.VITE_APTABASE_APP_KEY, {
+    host: 'https://stats.iamnoah.dev'
+  })
+
+  trackEvent('Viewed', {
+    path: '/'
+  })
+}
 
 const app = createApp(App)
 

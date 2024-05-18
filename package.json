@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@aptabase/web": "^0.4.2",
     "floating-vue": "^5.2.2",
     "lucide-vue-next": "^0.371.0",
     "txtgen": "^3.0.7",

@@ -4,6 +4,7 @@ import StyledButton from '@/components/StyledButton.vue'
 import { LINKS } from '@/assets/links'
 import { generateSharingLink } from '@/lib/sharing'
 import { Share2 } from 'lucide-vue-next'
+import { trackEvent } from '@aptabase/web'
 
 const props = defineProps({
   insult: {
@@ -11,6 +12,10 @@ const props = defineProps({
     required: true
   }
 })
+
+const handleShare = (platform: string) => {
+  trackEvent('Share', { platform })
+}
 </script>
 
 <template>
@@ -27,8 +32,7 @@ const props = defineProps({
           :key="item.name"
           target="_blank"
           :href="generateSharingLink(item.url, props.insult)"
-          data-umami-event="share"
-          :data-umami-event-name="item.name"
+          @click="() => handleShare(item.name)"
         >
           <component
             :is="item.Icon"
