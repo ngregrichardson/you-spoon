@@ -6,7 +6,7 @@ const emit = defineEmits(['generate'])
 
 const generateInsult = () => {
   emit('generate')
-  trackEvent('Generate Insult')
+  trackEvent('generate_insult')
 }
 </script>
 

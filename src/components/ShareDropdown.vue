@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const handleShare = (platform: string) => {
-  trackEvent('Share', { platform })
+  trackEvent('share', { platform })
 }
 </script>
 

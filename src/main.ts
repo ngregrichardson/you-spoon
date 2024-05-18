@@ -12,7 +12,7 @@ if (import.meta.env.VITE_APTABASE_APP_KEY) {
     host: 'https://stats.iamnoah.dev'
   })
 
-  trackEvent('Viewed', {
+  trackEvent('view', {
     path: '/'
   })
 }
